@@ -2,6 +2,10 @@
 
 InventoryMonitor is a simple inventory management system that helps you keep track of orders and inventory levels.
 
+How it could work:
+
+![Architecture graph](./docs/architecture.drawio.png)
+
 ## Features
 
 - TBA

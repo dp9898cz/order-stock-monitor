@@ -1,0 +1,59 @@
+<mxfile host="app.diagrams.net" modified="2023-10-13T18:56:23.907Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36" etag="Q8kzZba1vnqu6FFoDkQp" version="22.0.4" type="device">
+  <diagram name="Stránka-1" id="LSqGh3Vu-zBHfVH-52aL">
+    <mxGraphModel dx="1434" dy="739" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="IvKugoijsjH3c_qghowj-5" value="&lt;h3 style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;DOCKERIZED APP&lt;/span&gt;&lt;/h3&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="570" y="120" width="460" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="IvKugoijsjH3c_qghowj-1" value="MySQL" style="shape=datastore;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="865" y="320" width="70" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="IvKugoijsjH3c_qghowj-2" value="BACKEND&lt;br&gt;SERVER" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="840" y="190" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IvKugoijsjH3c_qghowj-3" value="FRONTEND&lt;br&gt;SERVER" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="190" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IvKugoijsjH3c_qghowj-4" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="IvKugoijsjH3c_qghowj-1" target="IvKugoijsjH3c_qghowj-2">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="680" y="310" as="sourcePoint" />
+            <mxPoint x="780" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IvKugoijsjH3c_qghowj-6" value="POHODA&lt;br&gt;SQL" style="shape=datastore;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="180" width="70" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="IvKugoijsjH3c_qghowj-7" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="IvKugoijsjH3c_qghowj-6" target="IvKugoijsjH3c_qghowj-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="750" y="240" as="sourcePoint" />
+            <mxPoint x="700" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IvKugoijsjH3c_qghowj-11" value="scheduled&lt;br&gt;tasks" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="IvKugoijsjH3c_qghowj-7">
+          <mxGeometry x="-0.5385" y="2" relative="1" as="geometry">
+            <mxPoint y="18" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IvKugoijsjH3c_qghowj-8" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="IvKugoijsjH3c_qghowj-2" target="IvKugoijsjH3c_qghowj-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="700" y="290" as="sourcePoint" />
+            <mxPoint x="750" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IvKugoijsjH3c_qghowj-9" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="IvKugoijsjH3c_qghowj-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="700" y="290" as="sourcePoint" />
+            <mxPoint x="480" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IvKugoijsjH3c_qghowj-10" value="port 8080" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="IvKugoijsjH3c_qghowj-9">
+          <mxGeometry x="0.1143" y="4" relative="1" as="geometry">
+            <mxPoint y="16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

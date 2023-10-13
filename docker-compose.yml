@@ -1,0 +1,21 @@
+version: '3'
+services:
+  database:
+    image: mysql:latest
+    environment:
+      MYSQL_USER: simple_user
+      MYSQL_PASSWORD: super_hard_password
+      MYSQL_ROOT_PASSWORD: super_hard_root_password
+      MYSQL_DATABASE: monitor_db
+    networks:
+      - inner_network
+
+  adminer:
+    image: adminer
+    ports:
+      - '5000:8080'
+    networks:
+      - inner_network
+
+networks:
+  inner_network:
