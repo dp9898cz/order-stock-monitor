@@ -23,5 +23,5 @@ git clone https://github.com/dp9898CZ/order-stock-monitor.git
 Run `docker-compose` to build project:
 
 ```bash
-docker-compose
+docker-compose up -d
 ```

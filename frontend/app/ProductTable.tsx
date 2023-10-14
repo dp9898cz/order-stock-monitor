@@ -1,4 +1,5 @@
 import React from "react";
+import OrderTableCell from "./OrderTableCell";
 
 const ProductTable = () => {
     return (
@@ -11,6 +12,7 @@ const ProductTable = () => {
                         <th>Name</th>
                         <th>Job</th>
                         <th>Favorite Color</th>
+                        <th>Sliding order window</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -20,6 +22,9 @@ const ProductTable = () => {
                         <td>Cy Ganderton</td>
                         <td>Quality Control Specialist</td>
                         <td>Blue</td>
+                        <td>
+                            <OrderTableCell />
+                        </td>
                     </tr>
                     {/* row 2 */}
                     <tr>
