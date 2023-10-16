@@ -1,3 +1,4 @@
 type Filters = {
-    timespanDays: number
+    timespanDays: number,
+    search: string,
 }

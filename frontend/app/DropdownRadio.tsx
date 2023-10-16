@@ -9,6 +9,7 @@ const DropdownRadio = () => {
         setFilters((prev) => {
             return { ...prev, timespanDays: newTimeSpan };
         });
+        // close current backdrop (potential err - try/catch block)
         try {
             (document.activeElement as HTMLElement).blur();
         } catch (error) {}
@@ -33,24 +34,20 @@ const DropdownRadio = () => {
                     </svg>
                 </label>
                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-full">
-                    <li onClick={() => changeState(7)}>
-                        <a>
-                            <input type="radio" name="radio-7" className="radio" checked={filters.timespanDays === 7} onChange={() => {}} />
-                            Posledních 7 dní
-                        </a>
-                    </li>
-                    <li onClick={() => changeState(14)}>
-                        <a>
-                            <input type="radio" name="radio-14" className="radio" checked={filters.timespanDays === 14} onChange={() => {}} />
-                            Posledních 14 dní
-                        </a>
-                    </li>
-                    <li onClick={() => changeState(30)}>
-                        <a>
-                            <input type="radio" name="radio-30" className="radio" checked={filters.timespanDays === 30} onChange={() => {}} />
-                            Posledních 30 dní
-                        </a>
-                    </li>
+                    {[7, 14, 30, 60, 90].map((timespan) => (
+                        <li key={timespan} onClick={() => changeState(timespan)}>
+                            <a>
+                                <input
+                                    type="radio"
+                                    name={`radio-${timespan}`}
+                                    className="radio"
+                                    checked={filters.timespanDays === timespan}
+                                    onChange={() => {}}
+                                />
+                                Posledních {timespan} dní
+                            </a>
+                        </li>
+                    ))}
                 </ul>
             </div>
         </>

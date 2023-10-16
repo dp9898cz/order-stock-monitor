@@ -12,6 +12,7 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     // setting default filters values
     const [filters, setFilters] = useState<Filters>({
         timespanDays: 30,
+        search: "",
     });
 
     return <FilterContext.Provider value={{ filters, setFilters }}>{children}</FilterContext.Provider>;
