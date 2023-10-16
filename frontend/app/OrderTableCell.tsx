@@ -9,8 +9,6 @@ const WINDOW_LENGTH: number = 30;
 const ORANGE_MARK_LENGTH: number = 5;
 
 const OrderTableCell = () => {
-    const currentDate = () => new Date();
-
     const getDayNumberWithIndex = (index: number): string => {
         const date = new Date();
         date.setDate(date.getDate() + index);
@@ -26,8 +24,8 @@ const OrderTableCell = () => {
     };
 
     const generateOutline = (index: number, daysToRunOut: number, orderToStockDelay: number): string => {
-        if (index === daysToRunOut - orderToStockDelay) return "border-red-500 border-2";
-        return "border-transparent border-2";
+        if (index === daysToRunOut - orderToStockDelay) return "outline outline-2 outline-red-500 outline-offset-2 mx-[3px]";
+        return "";
     };
 
     return (
@@ -39,7 +37,7 @@ const OrderTableCell = () => {
                         idx,
                         sampleProduct.daysToRunOut,
                         sampleProduct.orderToStockDelay
-                    )} p-1 rounded`}
+                    )} p-1 rounded `}
                 >
                     {getDayNumberWithIndex(idx)}
                 </div>
