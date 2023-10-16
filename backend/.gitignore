@@ -1,0 +1,31 @@
+# Bytecode
+*.pyc
+*.pyo
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+
+# Documentation
+docs/
+build/
+dist/
+
+# Tests
+tests/
+
+# Databases
+.db
+.sqlite3
+.sql
+
+# Logs
+logs/
+
+# PID files
+.pid
+
+# IDE files
+.idea/
