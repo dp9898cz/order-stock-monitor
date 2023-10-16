@@ -1,19 +1,17 @@
 version: '3'
 services:
-  database:
-    image: mysql:latest
-    environment:
-      MYSQL_USER: simple_user
-      MYSQL_PASSWORD: super_hard_password
-      MYSQL_ROOT_PASSWORD: super_hard_root_password
-      MYSQL_DATABASE: monitor_db
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - '5000:5000'
     networks:
       - inner_network
-
-  adminer:
-    image: adminer
+  frontend:
+    build:
+      context: ./frontend
     ports:
-      - '5000:8080'
+      - '3000:3000'
     networks:
       - inner_network
 
