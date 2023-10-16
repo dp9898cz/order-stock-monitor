@@ -1,8 +1,8 @@
 import React from "react";
 
 const sampleProduct = {
-    daysToRunOut: 20,
-    orderToStockDelay: 7,
+    daysToRunOut: 30,
+    orderToStockDelay: 14,
 };
 
 const WINDOW_LENGTH: number = 30;
@@ -24,7 +24,8 @@ const OrderTableCell = () => {
     };
 
     const generateOutline = (index: number, daysToRunOut: number, orderToStockDelay: number): string => {
-        if (index === daysToRunOut - orderToStockDelay) return "outline outline-2 outline-red-500 outline-offset-2 mx-[3px]";
+        if (index === daysToRunOut - orderToStockDelay || (index === 0 && daysToRunOut - orderToStockDelay < 0))
+            return "outline outline-2 outline-red-500 outline-offset-2 mx-[3px]";
         return "";
     };
 
