@@ -8,7 +8,7 @@ const sampleProduct = {
 const WINDOW_LENGTH: number = 30;
 const ORANGE_MARK_LENGTH: number = 5;
 
-const OrderTableCell = () => {
+const OrderTableCell = ({ daysToRunOut, orderToStockDelay }: { daysToRunOut: number; orderToStockDelay: number }) => {
     const getDayNumberWithIndex = (index: number): string => {
         const date = new Date();
         date.setDate(date.getDate() + index);
@@ -34,10 +34,10 @@ const OrderTableCell = () => {
             {Array.from({ length: WINDOW_LENGTH }, (_, idx) => (
                 <div
                     key={idx}
-                    className={`${generateBGAndTextColor(idx, sampleProduct.daysToRunOut, sampleProduct.orderToStockDelay)} ${generateOutline(
+                    className={`${generateBGAndTextColor(idx, daysToRunOut, orderToStockDelay)} ${generateOutline(
                         idx,
-                        sampleProduct.daysToRunOut,
-                        sampleProduct.orderToStockDelay
+                        daysToRunOut,
+                        orderToStockDelay
                     )} p-1 rounded `}
                 >
                     {getDayNumberWithIndex(idx)}

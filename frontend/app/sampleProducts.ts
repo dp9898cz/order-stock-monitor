@@ -1,0 +1,166 @@
+export const sampleProducts: Product[] = [
+  {
+    "EAN_code": "1234567890123",
+    "name": "Product 1",
+    "supplier_code": "SUP01",
+    "supply": 36,
+    "shop_price_CZK": 250.0,
+    "sell_price_CZK": 300.0,
+    "avg_sell_per_day": 5,
+    "days_to_run_out": 20,
+    "order_to_restock_delay": 14
+  },
+  {
+    "EAN_code": "2345678901234",
+    "name": "Product 2",
+    "supplier_code": "SUP02",
+    "supply": 42,
+    "shop_price_CZK": 300.0,
+    "sell_price_CZK": 350.0,
+    "avg_sell_per_day": 6,
+    "days_to_run_out": 18,
+    "order_to_restock_delay": 12
+  },
+  {
+    "EAN_code": "3456789012345",
+    "name": "Product 3",
+    "supplier_code": "SUP03",
+    "supply": 30,
+    "shop_price_CZK": 220.0,
+    "sell_price_CZK": 270.0,
+    "avg_sell_per_day": 4,
+    "days_to_run_out": 25,
+    "order_to_restock_delay": 15
+  },
+  {
+    "EAN_code": "4567890123456",
+    "name": "Product 4",
+    "supplier_code": "SUP04",
+    "supply": 50,
+    "shop_price_CZK": 280.0,
+    "sell_price_CZK": 330.0,
+    "avg_sell_per_day": 7,
+    "days_to_run_out": 15,
+    "order_to_restock_delay": 10
+  },
+  {
+    "EAN_code": "5678901234567",
+    "name": "Product 5",
+    "supplier_code": "SUP05",
+    "supply": 48,
+    "shop_price_CZK": 260.0,
+    "sell_price_CZK": 310.0,
+    "avg_sell_per_day": 5,
+    "days_to_run_out": 24,
+    "order_to_restock_delay": 16
+  },
+  {
+    "EAN_code": "6789012345678",
+    "name": "Product 6",
+    "supplier_code": "SUP06",
+    "supply": 38,
+    "shop_price_CZK": 270.0,
+    "sell_price_CZK": 320.0,
+    "avg_sell_per_day": 6,
+    "days_to_run_out": 19,
+    "order_to_restock_delay": 13
+  },
+  {
+    "EAN_code": "7890123456789",
+    "name": "Product 7",
+    "supplier_code": "SUP07",
+    "supply": 45,
+    "shop_price_CZK": 290.0,
+    "sell_price_CZK": 340.0,
+    "avg_sell_per_day": 5,
+    "days_to_run_out": 21,
+    "order_to_restock_delay": 14
+  },
+  {
+    "EAN_code": "8901234567890",
+    "name": "Product 8",
+    "supplier_code": "SUP08",
+    "supply": 55,
+    "shop_price_CZK": 300.0,
+    "sell_price_CZK": 350.0,
+    "avg_sell_per_day": 7,
+    "days_to_run_out": 18,
+    "order_to_restock_delay": 12
+  },
+  {
+    "EAN_code": "9012345678901",
+    "name": "Product 9",
+    "supplier_code": "SUP09",
+    "supply": 32,
+    "shop_price_CZK": 230.0,
+    "sell_price_CZK": 280.0,
+    "avg_sell_per_day": 4,
+    "days_to_run_out": 28,
+    "order_to_restock_delay": 17
+  },
+  {
+    "EAN_code": "0123456789012",
+    "name": "Product 10",
+    "supplier_code": "SUP10",
+    "supply": 40,
+    "shop_price_CZK": 260.0,
+    "sell_price_CZK": 310.0,
+    "avg_sell_per_day": 6,
+    "days_to_run_out": 20,
+    "order_to_restock_delay": 14
+  },
+  {
+    "EAN_code": "1234567890123",
+    "name": "Product 11",
+    "supplier_code": "SUP11",
+    "supply": 36,
+    "shop_price_CZK": 250.0,
+    "sell_price_CZK": 300.0,
+    "avg_sell_per_day": 5,
+    "days_to_run_out": 20,
+    "order_to_restock_delay": 14
+  },
+  {
+    "EAN_code": "2345678901234",
+    "name": "Product 12",
+    "supplier_code": "SUP12",
+    "supply": 42,
+    "shop_price_CZK": 300.0,
+    "sell_price_CZK": 350.0,
+    "avg_sell_per_day": 6,
+    "days_to_run_out": 18,
+    "order_to_restock_delay": 12
+  },
+  {
+    "EAN_code": "3456789012345",
+    "name": "Product 13",
+    "supplier_code": "SUP13",
+    "supply": 30,
+    "shop_price_CZK": 220.0,
+    "sell_price_CZK": 270.0,
+    "avg_sell_per_day": 4,
+    "days_to_run_out": 25,
+    "order_to_restock_delay": 15
+  },
+  {
+    "EAN_code": "4567890123456",
+    "name": "Product 14",
+    "supplier_code": "SUP14",
+    "supply": 50,
+    "shop_price_CZK": 280.0,
+    "sell_price_CZK": 330.0,
+    "avg_sell_per_day": 7,
+    "days_to_run_out": 15,
+    "order_to_restock_delay": 10
+  },
+  {
+    "EAN_code": "5678901234567",
+    "name": "Product 15",
+    "supplier_code": "SUP15",
+    "supply": 48,
+    "shop_price_CZK": 260.0,
+    "sell_price_CZK": 310.0,
+    "avg_sell_per_day": 5,
+    "days_to_run_out": 24,
+    "order_to_restock_delay": 16
+  }]

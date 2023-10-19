@@ -1,45 +1,37 @@
 import React from "react";
 import OrderTableCell from "./OrderTableCell";
 
-const ProductTable = () => {
+const ProductTable = ({ products }: { products: Product[] }) => {
     return (
         <div className="overflow-x-auto">
             <table className="table table-zebra">
-                {/* head */}
                 <thead>
                     <tr>
-                        <th></th>
-                        <th>Name</th>
-                        <th>Job</th>
-                        <th>Favorite Color</th>
-                        <th>Sliding order window</th>
+                        <th className="text-center">EAN</th>
+                        <th className="text-center">Název</th>
+                        <th>Kód dodavatele</th>
+                        <th>Zásoba</th>
+                        <th>Nákupní cena [CZK]</th>
+                        <th>Prodejní cena [CZK]</th>
+                        <th>Denní prodejnost</th>
+                        <th>Objednávkové okno</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {/* row 1 */}
-                    <tr>
-                        <th>1</th>
-                        <td>Cy Ganderton</td>
-                        <td>Quality Control Specialist</td>
-                        <td>Blue</td>
-                        <td>
-                            <OrderTableCell />
-                        </td>
-                    </tr>
-                    {/* row 2 */}
-                    <tr>
-                        <th>2</th>
-                        <td>Hart Hagerty</td>
-                        <td>Desktop Support Technician</td>
-                        <td>Purple</td>
-                    </tr>
-                    {/* row 3 */}
-                    <tr>
-                        <th>3</th>
-                        <td>Brice Swyre</td>
-                        <td>Tax Accountant</td>
-                        <td>Red</td>
-                    </tr>
+                    {products.map((product) => (
+                        <tr key={product.name}>
+                            <th>{product.EAN_code}</th>
+                            <td className="text-center min-w-[150px]">{product.name}</td>
+                            <td className="text-center">{product.supplier_code}</td>
+                            <td className="text-center">{product.supply}</td>
+                            <td className="text-center">{product.shop_price_CZK}</td>
+                            <td className="text-center">{product.sell_price_CZK}</td>
+                            <td className="text-center">{product.avg_sell_per_day}</td>
+                            <td>
+                                <OrderTableCell daysToRunOut={product.days_to_run_out} orderToStockDelay={product.order_to_restock_delay} />
+                            </td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>
