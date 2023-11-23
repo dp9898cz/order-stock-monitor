@@ -3,12 +3,13 @@ import OrderTableCell from "./OrderTableCell";
 
 const ProductTable = ({ products }: { products: Product[] }) => {
     return (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto" style={{ maxHeight: "calc(100vh - 68px - 72px)" }}>
             <table className="table table-zebra">
-                <thead>
+                <thead className="sticky">
                     <tr>
-                        <th className="text-center">EAN</th>
-                        <th className="text-center">Název</th>
+                        <th>Identifikátor</th>
+                        <th>EAN</th>
+                        <th>Název</th>
                         <th>Kód dodavatele</th>
                         <th>Zásoba</th>
                         <th>Nákupní cena [CZK]</th>
@@ -18,20 +19,23 @@ const ProductTable = ({ products }: { products: Product[] }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {products.map((product) => (
-                        <tr key={product.name}>
-                            <th>{product.EAN_code}</th>
-                            <td className="text-center min-w-[150px]">{product.name}</td>
-                            <td className="text-center">{product.supplier_code}</td>
-                            <td className="text-center">{product.supply}</td>
-                            <td className="text-center">{product.shop_price_CZK}</td>
-                            <td className="text-center">{product.sell_price_CZK}</td>
-                            <td className="text-center">{product.avg_sell_per_day}</td>
-                            <td>
-                                <OrderTableCell daysToRunOut={product.days_to_run_out} orderToStockDelay={product.order_to_restock_delay} />
-                            </td>
-                        </tr>
-                    ))}
+                    {products
+                        .sort((a, b) => b.marketability - a.marketability)
+                        .map((product, idx) => (
+                            <tr key={idx}>
+                                <th className="max-w-[250px]">{product.id}</th>
+                                <td>{product.ean}</td>
+                                <td className="text-center min-w-[150px]">{product.name}</td>
+                                <td className="text-center">{product.company}</td>
+                                <td className="text-center">{product.stock_count}</td>
+                                <td className="text-center">{product.buy_price}</td>
+                                <td className="text-center">{product.sell_price}</td>
+                                <td className="text-center">{product.marketability.toPrecision(3)}</td>
+                                <td>
+                                    <OrderTableCell daysToRunOut={Math.floor(product.stock_count / product.marketability)} orderToStockDelay={14} />
+                                </td>
+                            </tr>
+                        ))}
                 </tbody>
             </table>
         </div>

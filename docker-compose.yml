@@ -5,15 +5,12 @@ services:
       context: ./backend
     ports:
       - '5000:5000'
-    networks:
-      - inner_network
+    env_file:
+      - .env
   frontend:
     build:
       context: ./frontend
     ports:
       - '3000:3000'
-    networks:
-      - inner_network
-
-networks:
-  inner_network:
+    depends_on:
+      - backend

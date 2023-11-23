@@ -2,17 +2,13 @@
 
 InventoryMonitor is a simple inventory management system that helps you keep track of orders and inventory levels.
 
-How it could work:
-
-![Architecture graph](./docs/architecture.drawio.png)
-
 ## Features
 
 - TBA
 
 ## Getting Started
 
-Please note you must have installed `Docker` and `docker-compose` utility on your machine.
+Please note you must install `Docker` on your machine.
 
 Clone this repository:
 

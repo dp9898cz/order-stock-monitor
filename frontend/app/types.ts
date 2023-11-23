@@ -4,13 +4,14 @@ type Filters = {
 }
 
 type Product = {
-    EAN_code: string,
+    ean: string,
+    id: string,
     name: string,
-    supplier_code: string,
-    supply: number,
-    shop_price_CZK: number,
-    sell_price_CZK: number,
-    avg_sell_per_day: number,
-    days_to_run_out: number,
-    order_to_restock_delay: number
+    company: string,
+    stock_count: number,
+    buy_price: number,
+    sell_price: number,
+    marketability: number,
+    moves: string
+    order_quantity: number
 }

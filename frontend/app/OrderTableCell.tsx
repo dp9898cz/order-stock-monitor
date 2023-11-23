@@ -1,10 +1,5 @@
 import React from "react";
 
-const sampleProduct = {
-    daysToRunOut: 30,
-    orderToStockDelay: 14,
-};
-
 const WINDOW_LENGTH: number = 30;
 const ORANGE_MARK_LENGTH: number = 5;
 
