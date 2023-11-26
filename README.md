@@ -2,13 +2,15 @@
 
 InventoryMonitor is a simple inventory management system that helps you keep track of orders and inventory levels.
 
-## Features
-
-- TBA
-
 ## Getting Started
 
 Please note you must install `Docker` on your machine.
+
+<https://docs.docker.com/engine/install/debian/>
+
+<https://docs.docker.com/compose/install/linux/>
+
+## Running the app
 
 Clone this repository:
 
@@ -16,8 +18,18 @@ Clone this repository:
 git clone https://github.com/dp9898CZ/order-stock-monitor.git
 ```
 
-Run `docker-compose` to build project:
+Create `.env` file for database credentials:
 
 ```bash
-docker-compose up -d
+cp .env.template .env
 ```
+
+Fill in credentials in `.env` file.
+
+Run `docker compose` to build project and start application:
+
+```bash
+docker compose up -d
+```
+
+Application should be running on `localhost`.
