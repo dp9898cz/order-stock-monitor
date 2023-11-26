@@ -16,8 +16,6 @@ password = os.environ["DATABASE_PASSWORD"]
 
 
 def makeConnection():
-    print(username)
-    print(password)
     try:
         connection = pymssql.connect(
             server=server,
@@ -186,26 +184,4 @@ def get_orders():
 @app.route("/getData")
 def get_data():
     products = getProducts()
-    # orders = getOrders()
-    # moves = getMoves()
-
-    """ for product in products:
-        product["orders"] = [a for a in orders if a["product_id"] == product["id"]] """
-
-    # filter only products with some orders
-    # todo somehow filter what products to remove
-    """ filtered_products = [a for a in products if len(a["orders"]) > 0] """
-
-    """ for p in filtered_products:
-        p["marketability"] = sum(o["quantity"] for o in p["orders"]) """
-
-    """ for p in filtered_products:
-        p.pop("orders", None) """
-    print(len(products))
-    # print(moves[0])
-    """ product_moves = [
-        a for a in moves if a["product_counter_id"] == products[0]["counter_id"]
-    ] """
-    # print(len(product_moves))
-
     return json.dumps(products)

@@ -11,48 +11,16 @@ const AppBar = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
                         </svg>
                     </label>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-base-content">
-                        <li>
-                            <a>Item 1</a>
-                        </li>
-                        <li>
-                            <a>Parent</a>
-                            <ul className="p-2">
-                                <li>
-                                    <a>Submenu 1</a>
-                                </li>
-                                <li>
-                                    <a>Submenu 2</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a>Item 3</a>
-                        </li>
-                    </ul>
                 </div>
                 <a className="link no-underline font-bold normal-case text-xl">Inventory monitor</a>
             </div>
-            <div className="navbar-center hidden lg:flex">
+            <div className="navbar-center flex">
                 <ul className="menu menu-horizontal px-1 text-base-content">
                     <li>
-                        <a>Item 1</a>
-                    </li>
-                    <li tabIndex={0}>
-                        <details>
-                            <summary>Parent</summary>
-                            <ul className="p-2">
-                                <li>
-                                    <a>Submenu 1</a>
-                                </li>
-                                <li>
-                                    <a>Submenu 2</a>
-                                </li>
-                            </ul>
-                        </details>
+                        <a>Produkty</a>
                     </li>
                     <li>
-                        <a>Item 3</a>
+                        <a>Objednávky</a>
                     </li>
                 </ul>
             </div>

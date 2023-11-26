@@ -33,7 +33,7 @@ const DropdownRadio = () => {
                     </svg>
                 </label>
                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-full">
-                    {[7, 14, 30, 60, 90].map((timespan) => (
+                    {[30, 60, 90, 120].map((timespan) => (
                         <li key={timespan} onClick={() => changeState(timespan)}>
                             <a>
                                 <input

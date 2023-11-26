@@ -1,33 +1,38 @@
-"use client";
-import { useEffect, useState } from "react";
 import AppBar from "./AppBar";
 import FilterRow from "./FilterRow";
 import { FilterProvider } from "./FiltersContext";
 import ProductTable from "./ProductTable";
 import { calculateMarketability } from "./helpers/calculateMarketability";
+import { PaginationProvider } from "./providers/Pagination";
 
-export default function Home() {
-    const [products, setProducts] = useState<Product[]>([]);
+const getData = async (): Promise<Product[]> => {
+    const env = process.env.NODE_ENV;
+    const res = await fetch(`http://${env === "development" ? "localhost" : "backend"}:5000/getProducts`, { cache: "no-cache" });
+    const data = await res.json();
 
-    useEffect(() => {
-        const getData = async () => {
-            const resp = await (await fetch("/api/products")).json();
-            resp.data.forEach((product: Product) => {
-                const m = calculateMarketability(product, 90);
-                product.marketability = m;
-            });
-            setProducts(resp.data);
-        };
-        getData();
-    }, []);
+    data.forEach((product: Product) => {
+        const m = calculateMarketability(product, 90);
+        product.marketability = m;
+    });
+    return data as Product[];
+};
+
+// enforce no caching
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
+export default async function Home() {
+    const products = await getData();
 
     return (
         <FilterProvider>
-            <AppBar />
-            <main className="bg-base-100 text-base-content">
-                <FilterRow />
-                <ProductTable products={products} />
-            </main>
+            <PaginationProvider>
+                <AppBar />
+                <main className="bg-base-100 text-base-content">
+                    <FilterRow dataLength={products.length} />
+                    <ProductTable products={products} />
+                </main>
+            </PaginationProvider>
         </FilterProvider>
     );
 }
