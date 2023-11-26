@@ -16,6 +16,7 @@ Clone this repository:
 
 ```bash
 git clone https://github.com/dp9898CZ/order-stock-monitor.git
+cd order-stock-monitor
 ```
 
 Create `.env` file for database credentials:
@@ -26,7 +27,7 @@ cp .env.template .env
 
 Fill in credentials in `.env` file.
 
-Run `docker compose` to build project and start application:
+To build project and start application run:
 
 ```bash
 docker compose up -d
