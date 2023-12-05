@@ -7,7 +7,7 @@ const ORANGE_MARK_LENGTH: number = 7;
 const OrderTableCell = ({ daysToRunOut, orderToStockDelay }: { daysToRunOut: number; orderToStockDelay: number }) => {
     const today = new Date();
     const dateToOrder = new Date();
-    dateToOrder.setDate(dateToOrder.getDate() + (daysToRunOut - orderToStockDelay));
+    dateToOrder.setDate(today.getDate() + (daysToRunOut - orderToStockDelay));
 
     const getDayNumberWithIndex = (index: number): string => {
         const date = new Date();
@@ -44,7 +44,10 @@ const OrderTableCell = ({ daysToRunOut, orderToStockDelay }: { daysToRunOut: num
                 const isNewMonth = parseInt(day) === 1;
 
                 // add offset if last month was the one with order
-                const removeMonthOffset = dateToOrder < date && dateToOrder.getMonth() === oneMonthPrior(date).getMonth();
+                const removeMonthOffset =
+                    dateToOrder < date &&
+                    (dateToOrder.getMonth() === oneMonthPrior(date).getMonth() ||
+                        (daysToRunOut - orderToStockDelay < 0 && oneMonthPrior(date).getMonth() === today.getMonth()));
 
                 return (
                     <div key={idx} className="flex gap-1">
