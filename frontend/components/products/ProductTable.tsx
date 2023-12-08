@@ -1,7 +1,7 @@
 "use client";
 import React, { useContext } from "react";
 import OrderTableCell from "./OrderTableCell";
-import { PaginationContext } from "./providers/Pagination";
+import { PaginationContext } from "../../context/Pagination";
 
 const PRODUCTS_PER_PAGE = 50;
 

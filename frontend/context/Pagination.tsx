@@ -1,5 +1,5 @@
 "use client";
-import React, { createContext, useContext, useReducer, ReactNode } from "react";
+import React, { createContext, useReducer, ReactNode } from "react";
 
 interface PaginationState {
     currentPage: number;
@@ -47,12 +47,4 @@ const PaginationProvider: React.FC<PaginationProviderProps> = ({ children }) => 
     return <PaginationContext.Provider value={value}>{children}</PaginationContext.Provider>;
 };
 
-const usePagination = (): PaginationContextProps => {
-    const context = useContext(PaginationContext);
-    if (!context) {
-        throw new Error("usePagination must be used within a PaginationProvider");
-    }
-    return context;
-};
-
-export { PaginationProvider, usePagination };
+export { PaginationProvider };

@@ -1,5 +1,5 @@
 import React from "react";
-import { oneMonthPrior } from "./helpers/date";
+import { oneMonthPrior } from "@/libs/date";
 
 const WINDOW_LENGTH: number = 180;
 const ORANGE_MARK_LENGTH: number = 7;

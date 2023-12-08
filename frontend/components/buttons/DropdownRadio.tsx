@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useFilters } from "./FiltersContext";
+import { useFilters } from "../../context/FiltersContext";
 
 const DropdownRadio = () => {
     const { filters, setFilters } = useFilters();

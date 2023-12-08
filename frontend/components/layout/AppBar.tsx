@@ -12,7 +12,7 @@ const AppBar = () => {
                         </svg>
                     </label>
                 </div>
-                <a className="link no-underline font-bold normal-case text-xl">Inventory monitor</a>
+                <a className="link no-underline font-bold normal-case text-xl">Objednávkový systém</a>
             </div>
             <div className="navbar-center flex">
                 <ul className="menu menu-horizontal px-1 text-base-content">

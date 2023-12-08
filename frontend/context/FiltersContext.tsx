@@ -2,15 +2,15 @@
 import React, { createContext, useState, useContext, ReactNode } from "react";
 
 interface FilterContextType {
-    filters: Filters;
-    setFilters: React.Dispatch<React.SetStateAction<Filters>>;
+    filters: Filter;
+    setFilters: React.Dispatch<React.SetStateAction<Filter>>;
 }
 
 const FilterContext = createContext<FilterContextType | undefined>(undefined);
 
 export const FilterProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     // setting default filters values
-    const [filters, setFilters] = useState<Filters>({
+    const [filters, setFilters] = useState<Filter>({
         timespanDays: 30,
         search: "",
     });
