@@ -2,12 +2,12 @@
 import React, { useContext } from "react";
 import OrderTableCell from "./OrderTableCell";
 import { PaginationContext } from "../../context/Pagination";
+import { Product } from "@/types/Product";
 
 const PRODUCTS_PER_PAGE = 50;
 
 const ProductTable = ({ products }: { products: Product[] }) => {
     const pagination = useContext(PaginationContext);
-    const env = process.env.NODE_ENV;
 
     if (!pagination) return null;
 

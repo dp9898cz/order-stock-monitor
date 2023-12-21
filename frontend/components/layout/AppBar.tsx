@@ -1,5 +1,7 @@
 import React from "react";
 import ThemeChanger from "./ThemeChanger";
+import Link from "next/link";
+import ActiveOrderButton from "./ActiveOrderButton";
 
 const AppBar = () => {
     return (
@@ -12,19 +14,22 @@ const AppBar = () => {
                         </svg>
                     </label>
                 </div>
-                <a className="link no-underline font-bold normal-case text-xl">Objednávkový systém</a>
+                <Link href={"/"} className="link no-underline font-bold normal-case text-xl">
+                    Objednávkový systém
+                </Link>
             </div>
             <div className="navbar-center flex">
                 <ul className="menu menu-horizontal px-1 text-base-content">
                     <li>
-                        <a>Produkty</a>
+                        <Link href={"/produkty"}>Produkty</Link>
                     </li>
                     <li>
-                        <a>Objednávky</a>
+                        <Link href={"/objednavky"}>Objednávky</Link>
                     </li>
                 </ul>
             </div>
-            <div className="navbar-end">
+            <div className="navbar-end gap-4">
+                <ActiveOrderButton />
                 <ThemeChanger />
             </div>
         </div>

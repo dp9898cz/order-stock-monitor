@@ -1,3 +1,4 @@
+import { Product } from "@/types/Product";
 import FilterRow from "../../components/products/FilterRow";
 import ProductTable from "../../components/products/ProductTable";
 import { calculateMarketability } from "../../services/calculateMarketability";
@@ -19,8 +20,7 @@ export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 export default async function Home() {
-    //const products = await getData();
-    const products: Product[] = [];
+    const products = await getData();
 
     return (
         <main className="bg-base-100 text-base-content">
