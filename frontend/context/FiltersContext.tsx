@@ -1,4 +1,5 @@
 "use client";
+import { Filter } from "@/types/Filter";
 import React, { createContext, useState, useContext, ReactNode } from "react";
 
 interface FilterContextType {
@@ -16,6 +17,8 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         timespanDays: 30,
         search: "",
         perPage: 100,
+        direction: "asc",
+        sort: null,
     });
 
     const isActive = filters.search !== "";
