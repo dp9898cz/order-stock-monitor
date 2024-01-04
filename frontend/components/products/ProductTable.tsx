@@ -10,7 +10,7 @@ import { filterProducts } from "@/services/filterProducts";
 import { CellDate } from "@/types/CellDate";
 import { getData } from "@/services/getData";
 
-const PRODUCTS_PER_PAGE = 50;
+const PRODUCTS_PER_PAGE = 200;
 
 const ProductTable = ({ productsDefault }: { productsDefault: Product[] }) => {
     const [products, setProducts] = useState<Product[]>(productsDefault);
@@ -49,7 +49,7 @@ const ProductTable = ({ productsDefault }: { productsDefault: Product[] }) => {
 
     return (
         <>
-            <FilterRow products={filteredProducts} />
+            <FilterRow products={filteredProducts} perPage={PRODUCTS_PER_PAGE} />
 
             {!loading ? (
                 <div className="overflow-x-auto" style={{ maxHeight: "calc(100vh - 68px - 72px)" }}>

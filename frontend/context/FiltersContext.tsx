@@ -18,7 +18,7 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     });
 
     const isActive = filters.search !== "";
-    const reset = () => setFilters({ timespanDays: 30, search: "" });
+    const reset = () => setFilters({ ...filters, search: "" });
 
     return <FilterContext.Provider value={{ filters, setFilters, isActive, reset }}>{children}</FilterContext.Provider>;
 };

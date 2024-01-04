@@ -1,24 +1,21 @@
 "use client";
 
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import DropdownRadio from "../buttons/DropdownRadio";
 import Search from "./Search";
-import ExportButton from "../buttons/ExportButton";
 import { PaginationContext } from "../../context/Pagination";
 import IconButton from "@/components/buttons/iconButton";
 import { useFilters } from "@/context/FiltersContext";
 import { filterProducts } from "@/services/filterProducts";
 import { Product } from "@/types/Product";
 
-const PRODUCTS_PER_PAGE = 50;
-
-const FilterRow = ({ products }: { products: Product[] }) => {
+const FilterRow = ({ products, perPage }: { products: Product[]; perPage: number }) => {
     const pagination = useContext(PaginationContext);
 
     const { filters, isActive, reset, setFilters } = useFilters();
     const filteredProducts = filterProducts(products, filters.search);
 
-    const maxPage = Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE);
+    const maxPage = Math.ceil(filteredProducts.length / perPage);
 
     const inputRef = React.useRef<HTMLInputElement>(null);
 
@@ -97,7 +94,7 @@ const FilterRow = ({ products }: { products: Product[] }) => {
             ) : null}
             <section className="flex felx-1 items-center gap-2 justify-between">
                 <DropdownRadio />
-                <ExportButton />
+                {/* <ExportButton /> */}
             </section>
         </div>
     );
