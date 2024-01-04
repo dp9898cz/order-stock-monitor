@@ -49,7 +49,7 @@ const ProductTable = ({ productsDefault }: { productsDefault: Product[] }) => {
 
     return (
         <>
-            <FilterRow products={filteredProducts} perPage={PRODUCTS_PER_PAGE} />
+            <FilterRow products={filteredProducts} perPage={filters.perPage} />
 
             {!loading ? (
                 <div className="overflow-x-auto" style={{ maxHeight: "calc(100vh - 68px - 72px)" }}>
@@ -70,7 +70,7 @@ const ProductTable = ({ productsDefault }: { productsDefault: Product[] }) => {
                         <tbody>
                             {filteredProducts
                                 .sort((a, b) => b.marketability - a.marketability)
-                                .slice((pagination.currentPage - 1) * PRODUCTS_PER_PAGE, pagination.currentPage * PRODUCTS_PER_PAGE)
+                                .slice((pagination.currentPage - 1) * filters.perPage, pagination.currentPage * filters.perPage)
                                 .map((product, idx) => (
                                     <tr key={idx}>
                                         <th className="max-w-[250px]">{product.id}</th>

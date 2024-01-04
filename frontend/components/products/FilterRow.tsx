@@ -8,6 +8,7 @@ import IconButton from "@/components/buttons/iconButton";
 import { useFilters } from "@/context/FiltersContext";
 import { filterProducts } from "@/services/filterProducts";
 import { Product } from "@/types/Product";
+import DropdownPagination from "../buttons/DropdownPagination";
 
 const FilterRow = ({ products, perPage }: { products: Product[]; perPage: number }) => {
     const pagination = useContext(PaginationContext);
@@ -72,7 +73,7 @@ const FilterRow = ({ products, perPage }: { products: Product[]; perPage: number
                 ) : null}
             </section>
             {products ? (
-                <section>
+                <section className="flex justify-center">
                     <div className="join">
                         <button
                             className="join-item btn"
@@ -90,6 +91,7 @@ const FilterRow = ({ products, perPage }: { products: Product[]; perPage: number
                             »
                         </button>
                     </div>
+                    <DropdownPagination />
                 </section>
             ) : null}
             <section className="flex felx-1 items-center gap-2 justify-between">

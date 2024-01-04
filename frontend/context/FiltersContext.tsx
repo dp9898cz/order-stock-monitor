@@ -15,6 +15,7 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     const [filters, setFilters] = useState<Filter>({
         timespanDays: 30,
         search: "",
+        perPage: 100,
     });
 
     const isActive = filters.search !== "";
