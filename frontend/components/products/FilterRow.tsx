@@ -6,17 +6,37 @@ import Search from "./Search";
 import ExportButton from "../buttons/ExportButton";
 import { PaginationContext } from "../../context/Pagination";
 import IconButton from "@/components/buttons/iconButton";
+import { useFilters } from "@/context/FiltersContext";
+import { filterProducts } from "@/services/filterProducts";
+import { Product } from "@/types/Product";
 
 const PRODUCTS_PER_PAGE = 50;
 
-const FilterRow = ({ dataLength }: { dataLength: number }) => {
+const FilterRow = ({ products }: { products: Product[] }) => {
     const pagination = useContext(PaginationContext);
-    const maxPage = Math.ceil(dataLength / PRODUCTS_PER_PAGE);
+
+    const { filters, isActive, reset, setFilters } = useFilters();
+    const filteredProducts = filterProducts(products, filters.search);
+
+    const maxPage = Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE);
+
+    const inputRef = React.useRef<HTMLInputElement>(null);
 
     return (
         <div className="w-full p-2 flex justify-between items-center gap-1 flex-wrap">
             <section className="flex items-center gap-2">
-                <Search />
+                <Search ref={inputRef} />
+                <button
+                    className="btn"
+                    onClick={() => {
+                        setFilters((prev) => {
+                            if (!inputRef.current) return prev;
+                            return { ...prev, search: inputRef.current?.value };
+                        });
+                    }}
+                >
+                    Vyhledat
+                </button>
                 <IconButton
                     text="Filtrování"
                     onClick={() => {}}
@@ -39,8 +59,22 @@ const FilterRow = ({ dataLength }: { dataLength: number }) => {
                         </svg>
                     }
                 />
+                {isActive ? (
+                    <button
+                        className="btn btn-error"
+                        onClick={() => {
+                            reset();
+                            if (inputRef.current) {
+                                inputRef.current.value = "";
+                            }
+                            if (pagination) pagination.setPage(1);
+                        }}
+                    >
+                        Vymazat filtry
+                    </button>
+                ) : null}
             </section>
-            {dataLength > 0 ? (
+            {products ? (
                 <section>
                     <div className="join">
                         <button

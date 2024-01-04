@@ -1,3 +1,5 @@
+import { Product } from "@/types/Product";
+
 export const calculateMarketability = (product: Product, days: number): number => {
     if (!product || !product.moves || product.moves.length === 0 || product.order_quantity == 0) return 0;
     const moves = product.moves

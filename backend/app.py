@@ -1,4 +1,5 @@
-from flask import Flask
+from flask import Flask, request, make_response
+from flask_cors import CORS
 
 import pymssql
 import datetime
@@ -7,6 +8,7 @@ import json
 import os
 
 app = Flask(__name__)
+CORS(app)
 
 server = "185.140.114.73"
 port = "63875"
@@ -42,9 +44,11 @@ def getRows(sql_command):
     return rows
 
 
-def getProducts():
+def getProducts(days):
+    if (days is None) or (not days.isdigit()):
+        days = 90
     products_raw = getRows(
-        """
+        f"""
         SELECT
             s.IDS,
             s.EAN,
@@ -60,7 +64,7 @@ def getProducts():
                     + '_' + CONVERT(VARCHAR(10), poh.PohPMJ)
                     + '_' + CONVERT(VARCHAR(10), poh.StavZ)
                 FROM SkzPoh poh
-                WHERE poh.RefSKz = s.ID AND poh.Datum >= DATEADD(DAY, -90, GETDATE())
+                WHERE poh.RefSKz = s.ID AND poh.Datum >= DATEADD(DAY, -{days}, GETDATE())
                 FOR XML PATH('')), 1, 1, '') AS SkzPohIDs,
             ISNULL(SUM(order1.Mnozstvi), 0) AS TotalMnozstvi
         FROM
@@ -71,7 +75,7 @@ def getProducts():
                     pol.Kod as Kod,
                     pol.Mnozstvi as Mnozstvi
                 FROM OBJ obj JOIN OBJpol pol ON obj.ID = pol.RefAg
-                WHERE Datum >= DATEADD(MONTH, -3, GETDATE())
+                WHERE Datum >= DATEADD(DAY, -{days}, GETDATE())
             ) order1 ON s.IDS = order1.Kod
         LEFT JOIN
             (
@@ -173,7 +177,14 @@ def get_moves():
 
 @app.route("/getProducts")
 def get_products():
-    return getProducts()
+    days = request.args.get("days")
+    resp = make_response(getProducts(days))
+    resp.headers["Access-Control-Allow-Origin"] = "*"
+    resp.headers["Access-Control-Allow-Methods"] = "GET"
+    resp.headers[
+        "Access-Control-Allow-Headers"
+    ] = "Content-Type, Access-Control-Allow-Origin, xxx"
+    return resp
 
 
 @app.route("/getOrders")
@@ -183,5 +194,5 @@ def get_orders():
 
 @app.route("/getData")
 def get_data():
-    products = getProducts()
+    products = getProducts(90)
     return json.dumps(products)

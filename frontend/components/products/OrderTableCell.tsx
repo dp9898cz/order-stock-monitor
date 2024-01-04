@@ -1,22 +1,9 @@
+import { CellDate } from "@/types/CellDate";
 import React from "react";
-import { oneMonthPrior } from "@/libs/date";
 
-const WINDOW_LENGTH: number = 180;
 const ORANGE_MARK_LENGTH: number = 7;
 
-const OrderTableCell = ({ daysToRunOut, orderToStockDelay }: { daysToRunOut: number; orderToStockDelay: number }) => {
-    const today = new Date();
-    const dateToOrder = new Date();
-    dateToOrder.setDate(today.getDate() + (daysToRunOut - orderToStockDelay));
-
-    const getDayNumberWithIndex = (index: number): string => {
-        const date = new Date();
-        date.setDate(date.getDate() + index);
-        return date.toLocaleDateString("en-GB", {
-            day: "2-digit",
-        });
-    };
-
+const OrderTableCell = ({ daysToRunOut, orderToStockDelay, dates }: { daysToRunOut: number; orderToStockDelay: number; dates: CellDate[] }) => {
     const generateBGAndTextColor = (index: number, daysToRunOut: number, orderToStockDelay: number): string => {
         if (index < daysToRunOut - ORANGE_MARK_LENGTH) return "bg-green-600 text-white";
         if (index < daysToRunOut) return "bg-orange-400 text-white";
@@ -34,31 +21,18 @@ const OrderTableCell = ({ daysToRunOut, orderToStockDelay }: { daysToRunOut: num
 
     return (
         <div className="flex flex-row gap-1">
-            {Array.from({ length: WINDOW_LENGTH }, (_, idx) => {
-                const date = new Date();
-                date.setDate(date.getDate() + idx);
-
-                const day = getDayNumberWithIndex(idx);
+            {dates.map((date, idx) => {
                 const backgroundColor = generateBGAndTextColor(idx, daysToRunOut, orderToStockDelay);
                 const outline = generateOutline(idx, daysToRunOut, orderToStockDelay);
-                const isNewMonth = parseInt(day) === 1;
-
-                // add offset if last month was the one with order
-                const removeMonthOffset =
-                    dateToOrder < date &&
-                    (dateToOrder.getMonth() === oneMonthPrior(date).getMonth() ||
-                        (daysToRunOut - orderToStockDelay < 0 && oneMonthPrior(date).getMonth() === today.getMonth()));
 
                 return (
-                    <div key={idx} className="flex gap-1">
-                        {isNewMonth ? (
-                            <div key={idx + 5000} className={`py-1 rounded ml-2 ${removeMonthOffset ? "" : "ml-4"}`}>
-                                {date.toLocaleDateString("cs", { month: "short" })}
+                    <div key={idx} className={`p-1 relative rounded ${backgroundColor} ${outline}`}>
+                        {date.day}
+                        {date.day === "01" ? (
+                            <div className="absolute left-0 top-[-1.3rem] text-stone-500">
+                                {date.date.toLocaleDateString("cs", { month: "short" })}
                             </div>
                         ) : null}
-                        <div key={idx} className={`p-1 rounded ${backgroundColor} ${outline}`}>
-                            {day}
-                        </div>
                     </div>
                 );
             })}

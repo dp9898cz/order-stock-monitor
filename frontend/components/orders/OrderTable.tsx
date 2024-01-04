@@ -4,6 +4,7 @@ import { calculateTotalPrice } from "@/libs/order";
 import { generateRandomProduct } from "@/types/Product";
 import React, { useState } from "react";
 import OrderModal from "./OrderModal";
+import { Order } from "@/types/Order";
 
 const ORDERS_EXAMPLE: Order[] = [
     {

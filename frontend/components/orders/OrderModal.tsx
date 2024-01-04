@@ -1,3 +1,4 @@
+import { Order } from "@/types/Order";
 import React from "react";
 
 interface OrderModalProps {
