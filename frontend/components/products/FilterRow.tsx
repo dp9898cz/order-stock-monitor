@@ -35,7 +35,7 @@ const FilterRow = ({ products, perPage }: { products: Product[]; perPage: number
                 >
                     Vyhledat
                 </button>
-                <IconButton
+                {/*  <IconButton
                     text="Filtrování"
                     onClick={() => {}}
                     icon={
@@ -56,10 +56,11 @@ const FilterRow = ({ products, perPage }: { products: Product[]; perPage: number
                             />
                         </svg>
                     }
-                />
+                /> */}
                 {isActive ? (
                     <button
                         className="btn btn-error"
+                        title="Vymazat filtry"
                         onClick={() => {
                             reset();
                             if (inputRef.current) {
@@ -68,7 +69,7 @@ const FilterRow = ({ products, perPage }: { products: Product[]; perPage: number
                             if (pagination) pagination.setPage(1);
                         }}
                     >
-                        Vymazat filtry
+                        Vymazat
                     </button>
                 ) : null}
             </section>
@@ -82,7 +83,13 @@ const FilterRow = ({ products, perPage }: { products: Product[]; perPage: number
                             «
                         </button>
                         <button className="join-item btn">
-                            Strana {pagination?.currentPage} / {maxPage}
+                            {products.length === 0 ? (
+                                "Strana"
+                            ) : (
+                                <>
+                                    Strana {pagination?.currentPage} / {maxPage}
+                                </>
+                            )}
                         </button>
                         <button
                             className="join-item btn"

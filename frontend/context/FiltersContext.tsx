@@ -14,7 +14,7 @@ const FilterContext = createContext<FilterContextType | undefined>(undefined);
 export const FilterProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     // setting default filters values
     const [filters, setFilters] = useState<Filter>({
-        timespanDays: 30,
+        timespanDays: 90,
         search: "",
         perPage: 100,
         direction: "asc",

@@ -12,9 +12,10 @@ import { getData } from "@/services/getData";
 import ArrowDownAZ from "@/icons/ArrowDownAZ";
 import { SortValues } from "@/types/Filter";
 import ArrowDownZA from "@/icons/ArrowDownZA";
-import { getSortOption, sortOptions } from "@/libs/sort";
+import { getSortOption } from "@/libs/sort";
 import ArrowDown01 from "@/icons/ArrowDown01";
 import ArrowDown10 from "@/icons/ArrowDown10";
+import { getWhenToOrderIndex, getWhenToRunOutIndex } from "@/libs/orderDate";
 
 type Column = {
     name: string;
@@ -79,7 +80,7 @@ const ProductTable = ({ productsDefault }: { productsDefault: Product[] }) => {
             {!loading ? (
                 <div className="overflow-x-auto" style={{ maxHeight: "calc(100vh - 68px - 72px)" }}>
                     <table className="table table-zebra">
-                        <thead className="sticky top-0">
+                        <thead className="sticky top-0 z-10">
                             <tr className="bg-base-100">
                                 {COLUMNS.map(({ name, sortValue, iconType }) => (
                                     <th
@@ -130,8 +131,8 @@ const ProductTable = ({ productsDefault }: { productsDefault: Product[] }) => {
                                         <td className="text-center">{product.marketability.toPrecision(3)}</td>
                                         <td>
                                             <OrderTableCell
-                                                daysToRunOut={Math.max(Math.floor(product.stock_count / product.marketability), 0)}
-                                                orderToStockDelay={14}
+                                                daysToRunOut={getWhenToRunOutIndex(product)}
+                                                whenToOrderIndex={Math.max(getWhenToOrderIndex(product), 0)}
                                                 dates={dates}
                                             />
                                         </td>

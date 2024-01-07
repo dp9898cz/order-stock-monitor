@@ -1,5 +1,6 @@
 import { SortValues } from "@/types/Filter";
 import { Product } from "@/types/Product";
+import { getWhenToOrderIndex } from "./orderDate";
 
 export const sortOptions = [
     {
@@ -41,6 +42,11 @@ export const sortOptions = [
         value: "marketability",
         asc: (a: Product, b: Product) => a.marketability - b.marketability,
         desc: (a: Product, b: Product) => b.marketability - a.marketability,
+    },
+    {
+        value: "orderDate",
+        asc: (a: Product, b: Product) => getWhenToOrderIndex(a) - getWhenToOrderIndex(b),
+        desc: (a: Product, b: Product) => getWhenToOrderIndex(b) - getWhenToOrderIndex(a),
     },
 ];
 
