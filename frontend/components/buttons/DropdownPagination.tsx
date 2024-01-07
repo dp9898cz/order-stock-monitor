@@ -19,7 +19,7 @@ const DropdownPagination = () => {
 
     return (
         <>
-            <div className="dropdown dropdown-bottom">
+            <div className="dropdown dropdown-bottom z-20">
                 <label tabIndex={0} className="btn ml-1 w-28" title="Počet produktů na jednu stranu.">
                     {filters.perPage}
                     <svg className="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
